@@ -1,25 +1,20 @@
+int sqrt_helper(int n, int i);
+
 int _sqrt_recursion(int n)
 {
-    int start = 1, end = n, result;
-
     if (n < 0)
         return -1;
     if (n == 0 || n == 1)
         return n;
+    return sqrt_helper(n, 1);
+}
 
-    while (start <= end)
-    {
-        int mid = (start + end) / 2;
-        if (mid * mid == n)
-            return mid;
-        if (mid * mid < n)
-        {
-            start = mid + 1;
-            result = mid;
-        }
-        else
-            end = mid - 1;
-    }
-    return result;
+int sqrt_helper(int n, int i)
+{
+    if (i * i == n)
+        return i;
+    if (i * i > n)
+        return -1;
+    return sqrt_helper(n, i + 1);
 }
 
